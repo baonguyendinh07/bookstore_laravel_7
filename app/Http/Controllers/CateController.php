@@ -23,18 +23,43 @@ class CateController extends Controller
     {
         $cate = new Cate;
         $cate->name     = $request->cateName;
-        $cate->status   = $request->status;
-        $cate->special  = $request->special;
-        $cate->ordering = $request->ordering;
+        $cate->status   = $request->status ?? 'inactive';
+        $cate->special  = $request->special ?? '0';
+        $cate->ordering = $request->ordering ?? '10';
         $cate->created_by = 'admin';
         $cate->updated_by = 'admin';
         $cate->save();
-        return redirect()->route('admin.cate.getList')->with(['flash_object'=>'Category', 'flash_message'=>'được thêm thành công!']);
+        return redirect()->route('admin.cate.getList')->with(['flash_type' => 'success', 'flash_message' => 'Category được thêm thành công!']);
     }
 
-    public function getDelete($id){
+    public function getEdit($id)
+    {
+        $data = Cate::findOrFail($id)->toArray();
+        return view('admin.cate.edit', compact('data', 'id'));
+    }
+
+    public function postEdit(Request $request, $id)
+    {
+        $this->validate(
+            $request,
+            ['cateName'=>'required'],
+            ['cateName.required'=>'Category không được để trống!']
+        );
+        $cate = Cate::find($id);
+        $cate->name     = $request->cateName;
+        $cate->status   = $request->status ?? 'inactive';
+        $cate->special  = $request->special ?? '0';
+        $cate->ordering = $request->ordering ?? '10';
+        $cate->created_by = 'admin';
+        $cate->updated_by = 'admin';
+        $cate->save();
+        return redirect()->route('admin.cate.getList')->with(['flash_type' => 'success', 'flash_message' => 'Category đã được chỉnh sửa!']);
+    }
+
+    public function getDelete($id)
+    {
         $cate = Cate::find($id);
         $cate->delete($id);
-        return redirect()->route('admin.cate.getList')->with(['flash_object'=>'Category', 'flash_message'=>'đã được xóa thành công!']);
+        return redirect()->route('admin.cate.getList')->with(['flash_type' => 'success', 'flash_message' => 'Category đã được xóa thành công!']);
     }
 }

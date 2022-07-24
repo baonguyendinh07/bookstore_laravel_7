@@ -15,7 +15,7 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->longText('description');
             $table->string('picture');
             $table->string('link');
@@ -23,8 +23,8 @@ class CreateSlidersTable extends Migration
             $table->integer('ordering')->unsigned();
             $table->dateTime('created_at');
             $table->string('created_by');
-            $table->dateTime('modified_at');
-            $table->string('modified_by');
+            $table->dateTime('updated_at');
+            $table->string('updated_by');
         });
     }
 

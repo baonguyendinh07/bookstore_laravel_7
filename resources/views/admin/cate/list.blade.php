@@ -47,7 +47,7 @@
                                             <input type="text" class="form-control" name="search-key" value="">
                                             <span class="input-group-append">
                                                 <button type="submit" class="btn btn-info">Search</button>
-                                                <a href="index.php?module=backend&controller=category&action=index" class="btn btn-danger">Clear</a>
+                                                <a href="{{Route('admin.cate.getList')}}" class="btn btn-danger">Clear</a>
                                             </span>
                                         </div>
                                     </form>
@@ -62,7 +62,7 @@
                     <div class="card-header">
                         <h3 class="card-title">List</h3>
                         <div class="card-tools">
-                            <a href="index.php?module=backend&controller=category&action=index" class="btn btn-tool" data-card-widget="refresh">
+                            <a href="{{Route('admin.cate.getList')}}" class="btn btn-tool" data-card-widget="refresh">
                                 <i class="fas fa-sync-alt"></i>
                             </a>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -72,15 +72,19 @@
                     </div>
                     <div class="card-body">
                         @if(Session::has('flash_message'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-{{Session::get('flash_type')}}">
                             <ul class="list-unstyled mb-0">
-                                <li class="text-white"><b>{{Session::get('flash_object')}}</b> {{Session::get('flash_message')}}</li>
+                                <li class="text-white">{{Session::get('flash_message')}}</li>
                             </ul>
                         </div>
                         @endif
                         <div class="container-fluid">
-                            <div style="float: right; margin-bottom:7px;margin-right:-8px"><a href="category-form" class="btn btn-info  "><i class="fas fa-plus"></i>
-                                    Add New</a></div>
+                            <div style="float: right; margin-bottom:7px;margin-right:-8px">
+                                <a href="{{Route('admin.cate.getAdd')}}" class="btn btn-info  ">
+                                    <i class="fas fa-plus"></i>
+                                    Add New
+                                </a>
+                            </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table align-middle text-center table-bordered">
@@ -128,7 +132,7 @@
                                             </p>
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-info rounded-circle btn-sm">
+                                            <a href="{{URL::route('admin.cate.getEdit', $item['id'])}}" class="btn btn-info rounded-circle btn-sm">
                                                 <i class="fas fa-pen"></i>
                                             </a>
                                             <a href="{{URL::route('admin.cate.getDelete', $item['id'])}}" class="btn btn-danger btn-delete rounded-circle btn-sm">
