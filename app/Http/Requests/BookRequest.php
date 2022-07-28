@@ -24,7 +24,7 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:books,name',
+            'name' => 'required:books,name',
             'price' => 'required:books,price',
             'cate_id' => 'required:books,cate_id'
         ];
@@ -33,7 +33,6 @@ class BookRequest extends FormRequest
     public function messages(){
         return [
             'name.required' => 'Name không được để trống!',
-            'name.unique'   => 'Name đã tồn tại!',
             'price.required' => 'Price không được để trống!',
             'cate_id.required' => 'Category không được để trống!'
         ];

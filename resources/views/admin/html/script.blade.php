@@ -28,10 +28,10 @@
 <script src="{{ url('public/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('public/admin/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ url('public/admin/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('public/admin/dist/js/pages/dashboard.js')}}"></script>
+<!-- Notify -->
+<script src="{{ url('public/admin/dist/js/notify.min.js')}}"></script>
 <!-- Sweet Alert 2 -->
 <script src="{{ url('public/admin/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- My Script -->

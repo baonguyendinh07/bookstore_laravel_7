@@ -1,5 +1,18 @@
 @extends('admin.master')
 @section('content')
+<?php
+$statusOptions = ['active' => 'Active', 'inactive' => 'Inactive'];
+$specialOptions = ['No', 'Yes'];
+?>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Book Add</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -14,56 +27,55 @@
                                     Name
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" value="{{old('name')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Short Description </label>
-                                <textarea name="short_description" class="form-control" rows="5"></textarea>
+                                <textarea name="short_description" class="form-control" rows="5">{{old('short_description')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Description </label>
-                                <textarea name="description" class="form-control" id="editor" rows="5"></textarea>
+                                <textarea name="description" class="form-control" id="editor" rows="5">{{old('description')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Price <span class="text-danger">*</span></label>
-                                <input type="number" name="price" class="form-control" id="" value="" placeholder="">
+                                <input type="number" name="price" class="form-control" value="{{old('price')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Sale Off </label>
-                                <input type="number" name="sale_off" class="form-control" id="" value="" placeholder="">
+                                <input type="number" name="sale_off" class="form-control" value="{{old('sale_off')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Status <span class="text-danger">*</span></label>
                                 <select class="custom-select" name="status">
-                                    <option value="inactive">Inactive</option>
-                                    <option value="active" selected="">Active</option>
+                                    {{options($statusOptions, old('status'))}}
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Special </label>
                                 <select class="custom-select" name="special">
-                                    <option value="0" selected="">No</option>
-                                    <option value="1">Yes</option>
+                                    {{options($specialOptions, old('special'))}}
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
                                 <select class="custom-select" name="cate_id">
-                                    {{options($arrCate)}}
+                                    <option value="">- Select Category -</option>
+                                    {{options($cateOptions, old('cate_id'))}}
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Ordering </label>
-                                <input type="number" name="ordering" class="form-control" id="" value="10" placeholder="">
+                                <input type="number" name="ordering" class="form-control" id="" value="{{old('ordering') ?? 10}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Picture </label>
-                                <input type="file" name="picture" class="form-control" id="" value="" placeholder="" style="width:220px; border:none">
+                                <input type="file" name="picture" class="form-control" value="" style="width:220px; border:none">
                             </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success">Save</button>
-                            <a href="book-index" class="btn btn-danger">Cancel</a>
+                            <a href="{{route('admin.book.getList')}}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                 </form>

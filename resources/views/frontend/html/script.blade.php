@@ -1,0 +1,19 @@
+<script type="text/javascript" src="{{url('public/frontend/plugins/jquery/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/notify.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/adminlte.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/custom.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/jquery-3.3.1.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/jquery.exitintent.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/notifyjs/notify.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/exit.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/menu.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/lazysizes.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/popper.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/slick.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/bootstrap.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/bootstrap-notify.min.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/script.js')}}"></script>
+<script type="text/javascript" src="{{url('public/frontend/js/my-custom.js')}}"></script>
+<!-- <script src="{{url('public/frontend/dist/js/myscript.js')}}"></script> -->

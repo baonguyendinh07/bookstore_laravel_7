@@ -24,14 +24,14 @@ class CateRequest extends FormRequest
     public function rules()
     {
         return [
-            'cateName' => 'required|unique:cates,name'
+            'name' => 'required|unique:cates,name'
         ];
     }
 
     public function messages(){
         return [
-            'cateName.required' => 'Tên Category không được để trống!',
-            'cateName.unique'   => 'Category này đã tồn tại!'
+            'name.required' => 'Tên Category không được để trống!',
+            'name.unique'   => 'Category này đã tồn tại!'
         ];
     }
 }

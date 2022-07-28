@@ -26,6 +26,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.group.getList')}}" class="nav-link" data-active="group">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Group</p>
+                    </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="" class="nav-link" data-active="user">
                         <i class="nav-icon fas fa-user"></i>
@@ -36,13 +42,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="user-index" class="nav-link" data-active="index">
+                            <a href="{{route('admin.user.getList')}}" class="nav-link" data-active="index">
                                 <i class="nav-icon fas fa-list-ul"></i>
                                 <p>List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="user-form" class="nav-link" data-active="form">
+                            <a href="{{route('admin.user.getAdd')}}" class="nav-link" data-active="form">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>Add</p>
                             </a>
@@ -59,13 +65,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.cate.getList')}}" class="nav-link" data-active="index">
+                            <a href="{{route('admin.cate.getList')}}" class="nav-link" data-active="list">
                                 <i class="nav-icon fas fa-list-ul"></i>
                                 <p>List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.cate.getAdd')}}" class="nav-link" data-active="form">
+                            <a href="{{route('admin.cate.getAdd')}}" class="nav-link" data-active="add">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>Add</p>
                             </a>

@@ -1,6 +1,18 @@
 @extends('admin.master')
 @section('content')
-
+<?php
+$statusOptions = ['active' => 'Active', 'inactive' => 'Inactive'];
+$specialOptions = ['No', 'Yes'];
+?>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Category Add</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -11,27 +23,26 @@
                     <div class="card card-outline card-info">
                         <div class="card-body">
                             <div class="form-group">
-                                <label class="form-label fw-bold">Name <span class="text-danger">*</span></label><input type="text" name="cateName" class="form-control">
+                                <label class="form-label fw-bold">Name <span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control" value="{{old('name')}}">
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Status </label><select class="custom-select" name="status">
-                                    <option value="inactive">Inactive</option>
-                                    <option value="active" selected>Active</option>
+                                    {{options($statusOptions, old('status'))}}
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label fw-bold">Special </label><select class="custom-select" name="special">
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
+                                    {{options($specialOptions, old('special'))}}
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-label fw-bold">Ordering </label><input type="number" name="ordering" class="form-control" id="" value="10" placeholder="">
+                                <label class="form-label fw-bold">Ordering </label><input type="number" name="ordering" class="form-control" id="" value="{{old('ordering') ?? 10}}" placeholder="">
                             </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success">Save</button>
-                            <a href="{{Route('admin.cate.getList')}}" class="btn btn-danger">Cancel</a>
+                            <a href="{{route('admin.cate.getList')}}" class="btn btn-danger">Cancel</a>
                         </div>
                     </div>
                 </form>

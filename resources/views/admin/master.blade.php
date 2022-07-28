@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-@include('admin.html.head')
+    @include('admin.html.head')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -16,10 +16,6 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            @include('admin.html.content-header')
-            <!-- /.content-header -->
-
             <!-- Main content -->
             @yield('content')
             <!-- /.content -->
@@ -29,4 +25,5 @@
     <!-- ./wrapper -->
     @include('admin.html.script')
 </body>
+
 </html>
