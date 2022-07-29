@@ -15,9 +15,11 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <!-- error -->
+                @include('admin.html.error')
                 <!-- end error -->
-                <form action="" method="post">
+                <form action="{{route('admin.login.getLogin')}}" method="post">
                     <!-- token -->
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="input-group mb-3">
                         <input type="text" name="username" class="form-control" placeholder="Username">
                         <div class="input-group-append">

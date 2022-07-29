@@ -10,7 +10,7 @@
     <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
-            <a class="nav-link" href="index.html" role="button">
+            <a class="nav-link" href="{{route('frontend.index.getIndex')}}" role="button">
                 <i class="fas fa-eye"></i> View Site
             </a>
         </li>

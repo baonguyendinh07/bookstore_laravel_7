@@ -79,7 +79,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', ['as' => 'admin.user.getDelete', 'uses' => 'Admin\UserController@getDelete']);
     });
 
-    Route::get('login', ['as' => 'admin.login.getLogin', 'uses' => 'Auth\AuthController@getLogin']);
+    Route::get('login', ['as' => 'admin.login.getLogin', 'uses' => 'Admin\LoginController@getLogin']);
+    Route::post('login', ['as' => 'admin.login.postLogin', 'uses' => 'Admin\LoginController@postLogin']);
 });
 
 

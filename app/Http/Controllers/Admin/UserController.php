@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\User;
 use App\Group;
 use File;
+use Hash;
 
 class UserController extends Controller
 {
@@ -66,21 +67,19 @@ class UserController extends Controller
     {
         $user = new User;
         $user->username             = $request->username;
-        $avatarName                 = randomString(10) . '.jpg';
-        $user->avatar               = $avatarName;
 
         if (!empty($user->avatar)) {
-            File::delete('resources/upload/user/images/' . $user->avatar);
+            File::delete('resources/upload/user/avatar/' . $user->avatar);
         }
 
         if (!empty($request->file('avatar'))) {
             $avatarName                = randomString(10) . '.jpg';
             $user->avatar              = $avatarName;
-            $request->file('avatar')->move('resources/upload/user/images', $avatarName);
+            $request->file('avatar')->move('resources/upload/user/avatar', $avatarName);
         }
 
         $user->email                = $request->email;
-        $user->password             = md5($request->password);
+        $user->password             = Hash::make($request->password);
         $user->fullname             = $request->fullname;
         $user->status               = $request->status ?? 'active';
         $user->group_id             = $request->group_id;
