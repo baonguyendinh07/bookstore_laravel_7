@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function getIndex()
     {
-        $sliders = Slider::select('id', 'name', 'description', 'picture', 'link', 'status', 'ordering', 'created_at',  'created_by', 'updated_at', 'updated_by', 'status')->where('status', 'active')->orderBy('ordering', 'ASC')->get()->toArray();
+        $sliders = Slider::select('id', 'name', 'description', 'picture', 'link', 'status', 'ordering', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status')->where('status', 'active')->orderBy('ordering', 'ASC')->get()->toArray();
 
         $specialBooks = Book::select('id', 'name', 'short_description', 'price', 'sale_off', 'picture')->where([['status', '=', 'active'], ['special', '=', '1']])->orderBy('ordering', 'ASC')->get()->toArray();
 
