@@ -18,6 +18,8 @@ class ItemController extends Controller
             ['id', '!=', $id]
         ];
         $theSameBook = Book::inRandomOrder()->select('id', 'name', 'short_description', 'price', 'sale_off', 'picture')->orderBy('id', 'DESC')->where($theSameBookQuery)->limit(6)->get()->toArray();
-        return view('frontend.book.item', compact('data', 'theSameBook'));
+
+        $title = 'BOOKSTORE - ITEM';
+        return view('frontend.book.item', compact('data', 'theSameBook', 'title'));
     }
 }

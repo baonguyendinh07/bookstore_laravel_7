@@ -14,7 +14,10 @@ class LoginController extends Controller
 {
     public function getLogin()
     {
-        return view('admin.login');
+        if(!Auth::check()){
+            $title = 'Admin - Login';
+            return view('admin.login', compact('title'));
+        }
     }
 
     public function postLogin(LoginRequest $request)
@@ -35,6 +38,15 @@ class LoginController extends Controller
             }
         } else {
             return redirect()->back()->with(['flash_type' => 'danger', 'flash_message' => 'Username hoặc Password không đúng, vui lòng đăng nhập lại!']);
+        }
+    }
+
+    public function getLogout()
+    {
+        if(Auth::check()){
+            Auth::logout();
+
+            return redirect('admin/login');
         }
     }
 }

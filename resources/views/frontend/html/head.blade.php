@@ -4,7 +4,7 @@
 <link rel="icon" href="/public/template/frontend/images/favicon.png" type="image/x-icon">
 <link rel="shortcut icon" href="/public/template/frontend/images/favicon.png" type="image/x-icon">
 
-<title>BOOKSTORE</title>
+<title>{{$title}}</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <link rel="stylesheet" type="text/css" href="{{url('public/frontend/plugins/fontawesome-free/css/all.min.css')}}" />

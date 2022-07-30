@@ -22,6 +22,7 @@ class IndexController extends Controller
             $booksOfSpecialCates[$value['id']] = Book::select('id', 'name', 'short_description', 'price', 'sale_off', 'picture')->where([['status', '=', 'active'], ['cate_id', '=', $value['id']]])->orderBy('ordering', 'ASC')->take(8)->get()->toArray();
         }
 
-        return view('frontend.index.index', compact('sliders', 'specialBooks', 'specialCategories', 'booksOfSpecialCates'));
+        $title = 'BOOKSTORE';
+        return view('frontend.index.index', compact('sliders', 'specialBooks', 'specialCategories', 'booksOfSpecialCates', 'title'));
     }
 }

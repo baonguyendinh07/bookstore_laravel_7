@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index.index');
 });
 
 
 //admin
 Route::group(['prefix' => 'admin'], function () {
-    Route::group(['prefix' => 'cate'], function () {
+    Route::group(['prefix' => 'cate', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.cate.getList', 'uses' => 'Admin\CateController@getList']);
 
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', ['as' => 'admin.cate.getDelete', 'uses' => 'Admin\CateController@getDelete']);
     });
 
-    Route::group(['prefix' => 'book'], function () {
+    Route::group(['prefix' => 'book', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.book.getList', 'uses' => 'Admin\BookController@getList']);
         Route::get('changeStatus/{id}/{status}', ['as' => 'admin.book.changeStatus', 'uses' => 'Admin\BookController@changeStatus']);
@@ -60,12 +60,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', ['as' => 'admin.book.getDelete', 'uses' => 'Admin\BookController@getDelete']);
     });
 
-    Route::group(['prefix' => 'group'], function () {
+    Route::group(['prefix' => 'group', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.group.getList', 'uses' => 'Admin\GroupController@getList']);
     });
 
-    Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'user', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.user.getList', 'uses' => 'Admin\UserController@getList']);
         Route::get('changeGroupId/{id}/{group_id}', ['as' => 'admin.user.changeGroupId', 'uses' => 'Admin\UserController@changeGroupId']);
@@ -81,6 +81,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('login', ['as' => 'admin.login.getLogin', 'uses' => 'Admin\LoginController@getLogin']);
     Route::post('login', ['as' => 'admin.login.postLogin', 'uses' => 'Admin\LoginController@postLogin']);
+    Route::get('logout', ['as' => 'admin.login.getLogout', 'uses' => 'Admin\LoginController@getLogout']);
 });
 
 
@@ -95,6 +96,12 @@ Route::group(['prefix' => 'frontend'], function () {
     Route::group(['prefix' => 'book'], function () {
         //list
         Route::get('item/{id}', ['as' => 'frontend.book.getItem', 'uses' => 'Frontend\ItemController@getItem']);
+
+    });
+
+    Route::group(['prefix' => 'error'], function () {
+        //list
+        Route::get('error', ['as' => 'frontend.error.getError', 'uses' => 'Frontend\ErrorController@getError']);
 
     });
 });
