@@ -128,7 +128,7 @@ $specialOptions = ['No', 'Yes'];
                                             <td><input type="checkbox" name="form[id][]" value="{{$item['id']}}"></td>
                                             <td>{{$item['id']}}</td>
                                             <td class="text-left">
-                                                <p class="mb-0"><b>Name</b>: {{$item['name']}}</p>
+                                                <p class="mb-0"><b>Name</b>: {{highlight($_GET['search-key'] ?? '',$item['name'])}}</p>
                                                 <p class="mb-0"><b>Price</b>: {{number_format($item['price'])}}đ</p>
                                                 @if(!empty($item['sale_off']))
                                                 <p class="mb-0"><b>Sale Off</b>: {{$item['sale_off']}}%</p>

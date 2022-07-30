@@ -111,7 +111,7 @@
                                     <tr>
                                         <td>{{$item['id']}}</td>
                                         <td class="text-left">
-                                            <p class="mb-0">{{$item['name']}}</p>
+                                            <p class="mb-0">{{highlight($_GET['search-key'] ?? '',$item['name'])}}</p>
                                         </td>
                                         <td class="position-relative">
                                             {{showStatus($item['status'], route('admin.cate.changeStatus', [$item['id'], $item['status']]), 'status')}}

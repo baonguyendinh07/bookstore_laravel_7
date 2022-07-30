@@ -54,13 +54,16 @@ class UserController extends Controller
             'inactive' => $countInactive
         ];
 
-        return view('admin.user.list', compact('data', 'count', 'groupIdOptions'));
+        $title = 'User - List';
+        return view('admin.user.list', compact('data', 'count', 'groupIdOptions', 'title'));
     }
 
     public function getAdd()
     {
         $groupIdOptions = $this->getGroupIdOptions();
-        return view('admin.user.add', compact('groupIdOptions'));
+
+        $title = 'User - Add';
+        return view('admin.user.add', compact('groupIdOptions', 'title'));
     }
 
     public function postAdd(UserRequest $request)

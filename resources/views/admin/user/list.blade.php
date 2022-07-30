@@ -116,7 +116,7 @@
                                         <td><input type="checkbox" name="form[id][]" value="41"></td>
                                         <td>{{$item['id']}}</td>
                                         <td class="text-left">
-                                            <p class="mb-0"><b>Username</b>: {{$item['username']}}</p>
+                                            <p class="mb-0"><b>Username</b>: {{highlight($_GET['search-key'] ?? '',$item['username'])}}</p>
                                             <p class="mb-0"><b>FullName</b>: {{$item['fullname']}}</p>
                                             <p class="mb-0"><b>Email</b>: {{$item['email']}}</p>
                                         </td>

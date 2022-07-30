@@ -52,9 +52,9 @@ function highlight($searchKey, $subject)
 {
     if (!empty(trim($searchKey))) {
         $searchKey = preg_quote(trim($searchKey));
-        $subject = preg_replace("#$searchKey#i", "<mark>\\0</mark>", $subject);
+        $subject = preg_replace("#$searchKey#i", "<mark style='padding:0;background-color:yellow'>\\0</mark>", $subject);
     }
-    return $subject;
+    echo $subject;
 }
 
 function textCutting($text, $length)

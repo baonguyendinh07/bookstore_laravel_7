@@ -54,13 +54,16 @@ class BookController extends Controller
             'inactive' => $countInactive
         ];
 
-        return view('admin.book.list', compact('data', 'count', 'cateOptions'));
+        $title = 'Book - List';
+        return view('admin.book.list', compact('data', 'count', 'cateOptions', 'title'));
     }
 
     public function getAdd()
     {
         $cateOptions = $this->getCateOptions();
-        return view('admin.book.add', compact('cateOptions'));
+
+        $title = 'Book - Add';
+        return view('admin.book.add', compact('cateOptions', 'title'));
     }
 
     public function postAdd(BookRequest $request)
@@ -92,7 +95,9 @@ class BookController extends Controller
     {
         $data = Book::findOrFail($id)->toArray();
         $cateOptions = $this->getCateOptions();
-        return view('admin.book.edit', compact('data', 'id', 'cateOptions'));
+
+        $title = 'Book - Edit';
+        return view('admin.book.edit', compact('data', 'id', 'cateOptions', 'title'));
     }
 
     public function postEdit(Request $request, $id)

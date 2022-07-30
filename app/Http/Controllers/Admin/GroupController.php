@@ -18,6 +18,7 @@ class GroupController extends Controller
             $count[$item['id']] = User::where('group_id', $item['id'])->count();
         }
 
-        return view('admin.group.list', compact('data', 'count'));
+        $title = 'Group - List';
+        return view('admin.group.list', compact('data', 'count', 'title'));
     }
 }

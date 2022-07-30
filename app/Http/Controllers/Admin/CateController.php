@@ -40,12 +40,15 @@ class CateController extends Controller
             'active' => $countActive,
             'inactive' => $countInactive
         ];
-        return view('admin.cate.list', compact('data', 'count'));
+
+        $title = 'Category - List';
+        return view('admin.cate.list', compact('data', 'count', 'title'));
     }
 
     public function getAdd()
     {
-        return view('admin.cate.add');
+        $title = 'Category - Add';
+        return view('admin.cate.add', compact('title'));
     }
 
     public function postAdd(CateRequest $request)
@@ -64,7 +67,9 @@ class CateController extends Controller
     public function getEdit($id)
     {
         $data = Cate::findOrFail($id)->toArray();
-        return view('admin.cate.edit', compact('data', 'id'));
+
+        $title = 'Category - Add';
+        return view('admin.cate.edit', compact('data', 'id', 'title'));
     }
 
     public function postEdit(Request $request, $id)
