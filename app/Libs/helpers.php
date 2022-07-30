@@ -70,7 +70,7 @@ function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heigh
     $searchValue = $_GET['search'] ?? '';
     foreach ($arrData as $value) {
         $id         = $value['id'];
-        $name       = highlight($searchValue, textCutting($value['name'], $strlen));
+        $name       = textCutting($value['name'], $strlen);
         $picture    = !empty($value['picture']) ? $pathPicture . '/' . $value['picture'] : $pathPicture . '/default.jpg';
 /*         $itemURL      = filterURL($value['name']) . '-b' . $id;
         $quickViewURL = filterURL($value['name']) . '-qv' . $id; */

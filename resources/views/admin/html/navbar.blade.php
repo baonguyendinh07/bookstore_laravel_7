@@ -16,16 +16,16 @@
         </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <img src="avatar.jpg" class="user-image img-circle elevation-2" alt="User Image">
-                <span class="d-none d-md-inline">Full name</span>
+                <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" class="user-image img-circle elevation-2" alt="User Image">
+                <span class="d-none d-md-inline">{{Auth::user()->fullname}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                 <!-- User image -->
                 <li class="user-header bg-info">
-                    <img src="avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" class="img-circle elevation-2" alt="User Image">
 
                     <p>
-                        Full Name
+                        {{Auth::user()->fullname}}
                         <small>Username</small>
                     </p>
                 </li>

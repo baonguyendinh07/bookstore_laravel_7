@@ -1,3 +1,20 @@
+<?php
+$userActionButton = '';
+if (session()->has('userInfo')) {
+    $userActionButton = '
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="logout.html">Đăng xuất</a></li>
+                        ';
+} else {
+    $userActionButton = '
+                    <li><a href="login.html">Đăng nhập</a></li>
+                    <li><a href="register.html">Đăng ký</a></li>
+                    ';
+}
+
+View::share('userActionButton', $userActionButton);
+
+?>
 <header class="my-header sticky">
     <div class="mobile-fix-option"></div>
     <div class="container">
@@ -34,7 +51,8 @@
                                             Danh mục
                                         </a>
                                         <ul>
-                                            <?php //echo $headerCatarogy ?? '' ?>
+                                            <?php //echo $headerCatarogy ?? '' 
+                                            ?>
                                         </ul>
                                     </li>
                                 </ul>
@@ -43,9 +61,9 @@
                         <div class="top-header">
                             <ul class="header-dropdown">
                                 <li class="onhover-dropdown mobile-account">
-                                    <img src="<?php //echo $avatarLink ?>" alt="avatar" style="width:39px; height:39px;">
+                                    <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" alt="avatar" style="width:39px; height:39px;">
                                     <ul class="onhover-show-div">
-                                        <?php //echo $userActionButton ?>
+                                        <?= $userActionButton ?>
                                     </ul>
                                 </li>
                             </ul>
@@ -55,7 +73,8 @@
                                 <ul>
                                     <li class="onhover-div mobile-search">
                                         <div>
-                                            <img src="<?php //echo $this->_pathImg ?>search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt="">
+                                            <img src="<?php //echo $this->_pathImg 
+                                                        ?>search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt="">
                                             <i class="ti-search" onclick="openSearch()"></i>
                                         </div>
                                         <div id="search-overlay" class="search-overlay">
@@ -81,9 +100,11 @@
                                     <li class="onhover-div mobile-cart">
                                         <div>
                                             <a href="cart.html" id="cart" class="position-relative">
-                                                <img src="<?php //echo $this->_pathImg ?>cart.png" class="img-fluid blur-up lazyload" alt="cart">
+                                                <img src="<?php //echo $this->_pathImg 
+                                                            ?>cart.png" class="img-fluid blur-up lazyload" alt="cart">
                                                 <i class="ti-shopping-cart"></i>
-                                                <span class="badge badge-warning" id="totalQuantities"><?php //echo $totalQuantities ?></span>
+                                                <span class="badge badge-warning" id="totalQuantities"><?php //echo $totalQuantities 
+                                                                                                        ?></span>
                                             </a>
                                         </div>
                                     </li>

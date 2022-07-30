@@ -20,6 +20,16 @@ Route::get('/', function () {
 
 //admin
 Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'adminLogin'], function () {
+        //list
+        Route::get('list', ['as' => 'admin.dashboard.getList', 'uses' => 'Admin\DashboardController@getList']);
+    });
+
+    Route::group(['prefix' => 'group', 'middleware' => 'adminLogin'], function () {
+        //list
+        Route::get('list', ['as' => 'admin.group.getList', 'uses' => 'Admin\GroupController@getList']);
+    });
+
     Route::group(['prefix' => 'cate', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.cate.getList', 'uses' => 'Admin\CateController@getList']);
@@ -60,11 +70,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', ['as' => 'admin.book.getDelete', 'uses' => 'Admin\BookController@getDelete']);
     });
 
-    Route::group(['prefix' => 'group', 'middleware' => 'adminLogin'], function () {
-        //list
-        Route::get('list', ['as' => 'admin.group.getList', 'uses' => 'Admin\GroupController@getList']);
-    });
-
     Route::group(['prefix' => 'user', 'middleware' => 'adminLogin'], function () {
         //list
         Route::get('list', ['as' => 'admin.user.getList', 'uses' => 'Admin\UserController@getList']);
@@ -77,6 +82,25 @@ Route::group(['prefix' => 'admin'], function () {
 
         //delete
         Route::get('delete/{id}', ['as' => 'admin.user.getDelete', 'uses' => 'Admin\UserController@getDelete']);
+    });
+
+    Route::group(['prefix' => 'slider', 'middleware' => 'adminLogin'], function () {
+        //list
+        Route::get('list', ['as' => 'admin.slider.getList', 'uses' => 'Admin\SliderController@getList']);
+
+        Route::get('changeStatus/{id}/{status}', ['as' => 'admin.slider.changeStatus', 'uses' => 'Admin\SliderController@changeStatus']);
+        Route::get('changeOrdering/{id}/{ordering}', ['as' => 'admin.slider.changeOrdering', 'uses' => 'Admin\SliderController@changeOrdering']);
+
+        // //add
+        // Route::get('add', ['as' => 'admin.cate.getAdd', 'uses' => 'Admin\CateController@getAdd']);
+        // Route::post('add', ['as' => 'admin.cate.postAdd', 'uses' => 'Admin\CateController@postAdd']);
+
+        //edit
+        Route::get('edit/{id}', ['as' => 'admin.slider.getEdit', 'uses' => 'Admin\SliderController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.slider.postEdit', 'uses' => 'Admin\SliderController@postEdit']);
+
+        //delete
+        Route::get('delete/{id}', ['as' => 'admin.slider.getDelete', 'uses' => 'Admin\SliderController@getDelete']);
     });
 
     Route::get('login', ['as' => 'admin.login.getLogin', 'uses' => 'Admin\LoginController@getLogin']);

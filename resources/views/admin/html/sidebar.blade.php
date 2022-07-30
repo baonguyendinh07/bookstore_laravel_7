@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
-    <a href="dashboard.html" class="brand-link">
+    <a href="{{route('admin.dashboard.getList')}}" class="brand-link">
         <img src="{{url('/public/admin/dist/img/AdminLTELogo.png')}}" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
         <span class="brand-text font-weight-light"><b>Book Store Admin</b></span>
     </a>
@@ -10,10 +10,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="path/avatar/.jpg" class="img-circle elevation-2" alt="User Image" />
+                <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" class="img-circle elevation-2" alt="User Image" />
             </div>
             <div class="info">
-                <a href="#" class="d-block">Full Name</a>
+                <a href="#" class="d-block">{{Auth::user()->fullname}}</a>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="dashboard.html" class="nav-link" data-active="dashboard">
+                    <a href="{{route('admin.dashboard.getList')}}" class="nav-link" data-active="dashboard">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
@@ -111,7 +111,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="slider-index" class="nav-link" data-active="index">
+                            <a href="{{route('admin.slider.getList')}}" class="nav-link" data-active="index">
                                 <i class="nav-icon fas fa-list-ul"></i>
                                 <p>List</p>
                             </a>
