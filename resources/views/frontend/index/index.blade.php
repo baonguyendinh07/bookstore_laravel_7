@@ -102,7 +102,7 @@
                 <div class="theme-tab">
                     <ul class="tabs tab-title">
                         @foreach($specialCategories as $category)
-                        <li class="current">
+                        <li>
                             <a href="tab-category-{{$category['id']}}" class="my-product-tab" data-category="{{$category['id']}}">{{$category['name']}}</a>
                         </li>
                         @endforeach
