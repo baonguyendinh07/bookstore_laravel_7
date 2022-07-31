@@ -2,12 +2,12 @@
 $userActionButton = '';
 if (session()->has('userInfo')) {
     $userActionButton = '
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="logout.html">Đăng xuất</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="' . route('frontend.login.getLogout') . '">Đăng xuất</a></li>
                         ';
 } else {
     $userActionButton = '
-                    <li><a href="login.html">Đăng nhập</a></li>
+                    <li><a href="' . url('/login') . '">Đăng nhập</a></li>
                     <li><a href="register.html">Đăng ký</a></li>
                     ';
 }
@@ -58,7 +58,7 @@ if (session()->has('userInfo')) {
                         <div class="top-header">
                             <ul class="header-dropdown">
                                 <li class="onhover-dropdown mobile-account">
-                                    <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" alt="avatar" style="width:39px; height:39px;">
+                                    <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.png'))}}" alt="avatar" style="width:35px; height:35px;">
                                     <ul class="onhover-show-div">
                                         <?= $userActionButton ?>
                                     </ul>
@@ -97,8 +97,7 @@ if (session()->has('userInfo')) {
                                     <li class="onhover-div mobile-cart">
                                         <div>
                                             <a href="cart.html" id="cart" class="position-relative">
-                                                <img src="<?php //echo $this->_pathImg 
-                                                            ?>cart.png" class="img-fluid blur-up lazyload" alt="cart">
+                                                <img src="{{asset('public/frontend/images/cart.png')}}" class="img-fluid blur-up lazyload" alt="cart">
                                                 <i class="ti-shopping-cart"></i>
                                                 <span class="badge badge-warning" id="totalQuantities"><?php //echo $totalQuantities 
                                                                                                         ?></span>

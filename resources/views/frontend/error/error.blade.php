@@ -18,7 +18,7 @@
                 <div class="error-section">
                     <h1>404</h1>
                     <h2>Đường dẫn không hợp lệ</h2>
-                    <a href="{{route('frontend.index.getIndex')}}" class="btn btn-solid">Quay lại trang chủ</a>
+                    <a href="{{url('/')}}" class="btn btn-solid">Quay lại trang chủ</a>
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ class FrontendLoginMiddleware
                 return redirect()->route('frontend.login.getLogout');
             }
         } else {
-            return redirect('frontend/login');
+            return redirect('frontend/login/login');
         }
     }
 }

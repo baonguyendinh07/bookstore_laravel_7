@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\BookRequest;
+use App\Http\Requests\Amin\BookRequest;
 use App\Book;
 use App\Cate;
 use File;

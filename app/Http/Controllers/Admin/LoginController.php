@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Admin\LoginRequest;
 use App\Group;
 use App\User;
 use Auth;
@@ -15,7 +15,7 @@ class LoginController extends Controller
     public function getLogin()
     {
         if(Auth::check()){
-            return redirect('admin/book/list');
+            return redirect('admin/dashboard/list');
         }else{
             $title = 'Admin - Login';
             return view('admin.login', compact('title'));

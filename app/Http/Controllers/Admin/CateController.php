@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\CateRequest;
+use App\Http\Requests\Admin\CateRequest;
 use App\Cate;
 
 class CateController extends Controller

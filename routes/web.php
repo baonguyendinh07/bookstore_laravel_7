@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Frontend\IndexController@getIndex');
+//Admin - Rewrite friendly url
+Route::get('/admin', 'Admin\LoginController@getLogin');
+
+//Frontend - Rewrite friendly url
+Route::get('/', ['as' => 'frontend.index.getIndex', 'uses' => 'Frontend\IndexController@getIndex']);
 Route::get('/b-{id}-{slug}', 'Frontend\BookController@getItem');
+Route::get('/login', 'Frontend\LoginController@getLogin');
+Route::get('/register', 'Frontend\LoginController@getRegister');
 
 //admin
 Route::group(['prefix' => 'admin'], function () {
@@ -109,11 +115,11 @@ Route::group(['prefix' => 'admin'], function () {
 
 //frontend
 Route::group(['prefix' => 'frontend'], function () {
-    Route::group(['prefix' => 'index'], function () {
+/*     Route::group(['prefix' => 'index'], function () {
         //list
         Route::get('index', ['as' => 'frontend.index.getIndex', 'uses' => 'Frontend\IndexController@getIndex']);
 
-    });
+    }); */
 
     Route::group(['prefix' => 'book'], function () {
         //list
@@ -124,6 +130,13 @@ Route::group(['prefix' => 'frontend'], function () {
     Route::group(['prefix' => 'error'], function () {
         //list
         Route::get('error', ['as' => 'frontend.error.getError', 'uses' => 'Frontend\ErrorController@getError']);
+    });
 
+//frontendLogin
+
+    Route::group(['prefix' => 'login'], function () {
+        Route::get('login', ['as' => 'frontend.login.getLogin', 'uses' => 'Frontend\LoginController@getLogin']);
+        Route::post('login', ['as' => 'frontend.login.postLogin', 'uses' => 'Frontend\LoginController@postLogin']);
+        Route::get('logout', ['as' => 'frontend.login.getLogout', 'uses' => 'Frontend\LoginController@getLogout']);
     });
 });
