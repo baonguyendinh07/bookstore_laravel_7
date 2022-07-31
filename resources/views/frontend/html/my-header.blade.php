@@ -11,9 +11,6 @@ if (session()->has('userInfo')) {
                     <li><a href="register.html">Đăng ký</a></li>
                     ';
 }
-
-View::share('userActionButton', $userActionButton);
-
 ?>
 <header class="my-header sticky">
     <div class="mobile-fix-option"></div>
@@ -23,7 +20,7 @@ View::share('userActionButton', $userActionButton);
                 <div class="main-menu">
                     <div class="menu-left">
                         <div class="brand-logo">
-                            <a href="{{route('frontend.index.getIndex')}}">
+                            <a href="{{url('/')}}">
                                 <h2 class="mb-0" style="color: #5fcbc4">BookStore</h2>
                             </a>
                         </div>
@@ -37,7 +34,7 @@ View::share('userActionButton', $userActionButton);
                                         <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
                                     </li>
                                     <li>
-                                        <a href="{{route('frontend.index.getIndex')}}" class="my-menu-link" data-active="index">
+                                        <a href="{{url('/')}}" class="my-menu-link" data-active="index">
                                             Trang chủ
                                         </a>
                                     </li>

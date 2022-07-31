@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
 
-class ItemController extends Controller
+class BookController extends Controller
 {
     public function getItem($id)
     {

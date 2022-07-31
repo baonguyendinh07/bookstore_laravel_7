@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index.index');
-});
-
+Route::get('/', 'Frontend\IndexController@getIndex');
+Route::get('/b-{id}-{slug}', 'Frontend\BookController@getItem');
 
 //admin
 Route::group(['prefix' => 'admin'], function () {
@@ -119,7 +117,7 @@ Route::group(['prefix' => 'frontend'], function () {
 
     Route::group(['prefix' => 'book'], function () {
         //list
-        Route::get('item/{id}', ['as' => 'frontend.book.getItem', 'uses' => 'Frontend\ItemController@getItem']);
+        Route::get('item/{id}', ['as' => 'frontend.book.getItem', 'uses' => 'Frontend\BookController@getItem']);
 
     });
 

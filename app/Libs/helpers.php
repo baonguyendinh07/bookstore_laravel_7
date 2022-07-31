@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Str;
+
 function showStatus($status, $link = '', $column = '')
 {
     if ($status === 'active' || $status == 1) {
@@ -72,9 +75,8 @@ function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heigh
         $id         = $value['id'];
         $name       = textCutting($value['name'], $strlen);
         $picture    = !empty($value['picture']) ? $pathPicture . '/' . $value['picture'] : $pathPicture . '/default.jpg';
-/*         $itemURL      = filterURL($value['name']) . '-b' . $id;
-        $quickViewURL = filterURL($value['name']) . '-qv' . $id; */
-        $itemURL = route('frontend.book.getItem', $id);
+        $itemURL    = url('/b-' . $id . '-' . Str::slug($value['name']));
+        //$quickViewURL = filterURL($value['name']) . '-qv' . $id;
         $quickViewURL = '';
         $saleOffXhtml = '';
 
