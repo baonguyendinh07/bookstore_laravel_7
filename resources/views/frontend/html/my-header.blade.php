@@ -2,13 +2,13 @@
 $userActionButton = '';
 if (session()->has('userInfo')) {
     $userActionButton = '
-                        <li><a href="">Profile</a></li>
-                        <li><a href="' . route('frontend.login.getLogout') . '">Đăng xuất</a></li>
+                        <li><a href="'.url('/profile').'">Profile</a></li>
+                        <li><a href="' . url('logout') . '">Đăng xuất</a></li>
                         ';
 } else {
     $userActionButton = '
                     <li><a href="' . url('/login') . '">Đăng nhập</a></li>
-                    <li><a href="register.html">Đăng ký</a></li>
+                    <li><a href="' . url('register') . '">Đăng ký</a></li>
                     ';
 }
 ?>

@@ -28,7 +28,7 @@ class AdminLoginMiddleware
                     return $next($request);
                 } else {
                     // return view lỗi frontend
-                    return redirect('frontend/error/error');
+                    return redirect()->route('frontend.error.getError');
                 }
             }else{
                 //logout

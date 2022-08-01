@@ -19,7 +19,7 @@ $specialOptions = ['No', 'Yes'];
             <div class="col-12">
                 @include('admin.html.error')
                 <form action="{{route('admin.book.getAdd')}}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="card card-outline card-info">
                         <div class="card-body">
                             <div class="form-group">

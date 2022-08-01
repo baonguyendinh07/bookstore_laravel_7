@@ -19,7 +19,7 @@
                 <h3>Đăng nhập</h3>
                 <div class="theme-card">
                     @include('frontend.html.error')
-                    <form action="{{route('frontend.login.getLogin')}}" method="post" id="admin-form" class="theme-form">
+                    <form action="{{route('frontend.login.postLogin')}}" method="post" id="admin-form" class="theme-form">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label class="required">Tên đăng nhập</label>

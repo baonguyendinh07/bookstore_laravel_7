@@ -41,7 +41,7 @@ class LoginController extends Controller
     public function getRegister()
     {
         if (Auth::check()) {
-            return redirect('frontend/index/index');
+            return redirect()->route('frontend.index.getIndex');
         } else {
             $title = 'BOOKSTORE - REGISTER';
             return view('frontend.login.register', compact('title'));
@@ -51,12 +51,13 @@ class LoginController extends Controller
     public function getLogout()
     {
         if (Auth::check()) {
+            
             session()->flush();
             Auth::logout();
-
-            return redirect('frontend/login/login');
+            
+            return redirect()->route('frontend.login.getLogin');
         } else {
-            return redirect('frontend/error/error');
+            return redirect()->route('frontend.error.getError');
         }
     }
 }
