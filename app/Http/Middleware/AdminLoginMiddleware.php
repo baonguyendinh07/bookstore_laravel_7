@@ -28,7 +28,8 @@ class AdminLoginMiddleware
                     return $next($request);
                 } else {
                     // return view lỗi frontend
-                    return redirect()->route('frontend.error.getError');
+                    $title = 'BOOK STORE - PAGE NOT FOUND';
+                    return view('errors.404', compact('title'));
                 }
             }else{
                 //logout

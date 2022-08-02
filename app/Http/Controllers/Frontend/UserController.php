@@ -10,10 +10,20 @@ class UserController extends Controller
 {
     public function getProfile()
     {
-        if (session()->has('userInfo')) {
-            $userInfo = Auth::user();
-            $title = 'BOOK - PROFILE';
-            return view('frontend.user.profile', compact('title', 'userInfo'));
-        }
+        $userInfo = Auth::user();
+        $title = 'BOOK - PROFILE';
+        return view('frontend.user.profile', compact('title', 'userInfo'));
+    }
+
+    public function getChangePassword()
+    {
+        $title = 'BOOK - CHANGE PASSWORD';
+        return view('frontend.user.changePassword', compact('title'));
+    }
+
+    public function getOrderHistory()
+    {
+        $title = 'BOOK - ORDER HISTORY';
+        return view('frontend.user.orderHistory', compact('title'));
     }
 }

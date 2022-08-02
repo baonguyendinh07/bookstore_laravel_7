@@ -57,7 +57,8 @@ class LoginController extends Controller
             
             return redirect()->route('frontend.login.getLogin');
         } else {
-            return redirect()->route('frontend.error.getError');
+            $title = 'BOOKSTORE - PAGE NOT FOUND';
+            return view('errors.404', compact('title'));
         }
     }
 }

@@ -27,6 +27,8 @@ Route::get('/logout', ['as' => 'frontend.login.getLogout', 'uses' => 'Frontend\L
 Route::get('/register', ['as' => 'frontend.login.getRegister', 'uses' => 'Frontend\LoginController@getRegister']);
 
 Route::get('/profile', ['as' => 'frontend.user.getProfile', 'uses' => 'Frontend\UserController@getProfile'])->middleware('frontendLogin');
+Route::get('/change-password', ['as' => 'frontend.user.getChangePassword', 'uses' => 'Frontend\UserController@getChangePassword'])->middleware('frontendLogin');
+Route::get('/order-history', ['as' => 'frontend.user.getOrderHistory', 'uses' => 'Frontend\UserController@getOrderHistory'])->middleware('frontendLogin');
 
 Route::get('/error', ['as' => 'frontend.error.getError', 'uses' => 'Frontend\ErrorController@getError']);
 

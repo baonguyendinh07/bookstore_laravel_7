@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UserRequest;
@@ -8,6 +9,7 @@ use App\User;
 use App\Group;
 use File;
 use Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -23,23 +25,21 @@ class UserController extends Controller
 
     public function getList()
     {
-        $data = User::select('id', 'username', 'avatar', 'password', 'email', 'fullname', 'birthday', 'phone_number', 'address', 'created_at',  'created_by', 'updated_at', 'updated_by', 'status', 'group_id')->orderBy('id', 'DESC')->get()->toArray();
-        $arrDataForCount = $data;
-        $groupIdOptions = $this->getGroupIdOptions();
+        $arrQuery[] = ['group_id', '>', Auth::user()->group_id];
 
         if (isset($_GET['status']) && $_GET['status'] != 'all') $arrQuery[] = ['status', '=', $_GET['status']];
         if (isset($_GET['group_id']) && $_GET['group_id'] != 'default') $arrQuery[] = ['group_id', '=', $_GET['group_id']];
         if (isset($_GET['search-key'])) $arrQuery[] = ['username', 'like', '%' . $_GET['search-key'] . '%'];
 
-        if (!empty($arrQuery)) {
-            $data = User::select('id', 'username', 'avatar', 'password', 'email', 'fullname', 'birthday', 'phone_number', 'address', 'created_at',  'created_by', 'updated_at', 'updated_by', 'status', 'group_id')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
+        $data = User::select('id', 'username', 'avatar', 'password', 'email', 'fullname', 'birthday', 'phone_number', 'address', 'created_at',  'created_by', 'updated_at', 'updated_by', 'status', 'group_id')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
+        $arrDataForCount = $data;
+        $groupIdOptions = $this->getGroupIdOptions();
 
-            foreach ($arrQuery as $key => $value) {
-                if ($value[0] == 'status') unset($arrQuery[$key]);
-            }
-
-            $arrDataForCount = User::select('status')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
+        foreach ($arrQuery as $key => $value) {
+            if ($value[0] == 'status') unset($arrQuery[$key]);
         }
+
+        $arrDataForCount = User::select('status')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
 
         $countActive = 0;
         $countInactive = 0;
