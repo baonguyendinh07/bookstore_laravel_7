@@ -70,7 +70,6 @@ function textCutting($text, $length)
 function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heightTextBox = '', $openDiv = '', $closeDiv = '')
 {
     $xhtmlTypeBooks = '';
-    $searchValue = $_GET['search'] ?? '';
     foreach ($arrData as $value) {
         $id         = $value['id'];
         $name       = textCutting($value['name'], $strlen);
