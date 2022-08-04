@@ -125,7 +125,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link" data-active="cart">
+                    <a href="{{route('admin.cart.getList')}}" class="nav-link" data-active="cart">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>Cart</p>
                     </a>

@@ -12,7 +12,7 @@ class SliderController extends Controller
     {
         $data = Slider::select('id', 'name', 'description', 'picture', 'link', 'status', 'ordering', 'created_by', 'updated_by', 'status')->orderBy('id', 'DESC')->get()->toArray();
 
-        $arrDataForCount = $data;
+        $arrDataForCount = count($data);
 
         if (isset($_GET['status']) && $_GET['status'] != 'all') $arrQuery[] = ['status', '=', $_GET['status']];
 
@@ -23,18 +23,14 @@ class SliderController extends Controller
                 if ($value[0] == 'status') unset($arrQuery[$key]);
             }
 
-            $arrDataForCount = Slider::select('status')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
+            $arrDataForCount = Slider::where($arrQuery)->count();
         }
 
-        $countActive = 0;
-        $countInactive = 0;
-        foreach ($arrDataForCount as $value) {
-            if ($value['status'] == 'active') $countActive++;
-            if ($value['status'] == 'inactive') $countInactive++;
-        }
+        $countActive = Slider::where('status', 'active')->count();
+        $countInactive = Slider::where('status', 'inactive')->count();
 
         $count = [
-            'all' => count($arrDataForCount),
+            'all' => $arrDataForCount,
             'active' => $countActive,
             'inactive' => $countInactive
         ];

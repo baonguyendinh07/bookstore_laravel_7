@@ -117,6 +117,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('delete/{id}', ['as' => 'admin.slider.getDelete', 'uses' => 'Admin\SliderController@getDelete']);
     });
 
+    Route::group(['prefix' => 'cart', 'middleware' => 'adminLogin'], function () {
+        //list
+        Route::get('list', ['as' => 'admin.cart.getList', 'uses' => 'Admin\CartController@getList']);
+        Route::get('detail/{id}', ['as' => 'admin.cart.getDetail', 'uses' => 'Admin\CartController@getDetail']);
+        Route::get('changeStatus/{id}/{status}', ['as' => 'admin.cart.changeStatus', 'uses' => 'Admin\CartController@changeStatus']);
+    });
+
     Route::get('login', ['as' => 'admin.login.getLogin', 'uses' => 'Admin\LoginController@getLogin']);
     Route::post('login', ['as' => 'admin.login.postLogin', 'uses' => 'Admin\LoginController@postLogin']);
     Route::get('logout', ['as' => 'admin.login.getLogout', 'uses' => 'Admin\LoginController@getLogout']);

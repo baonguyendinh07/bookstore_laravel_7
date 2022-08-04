@@ -31,6 +31,7 @@ class BookController extends Controller
         if (isset($_GET['special']) && $_GET['special'] != 'default') $arrQuery[] = ['special', '=', $_GET['special']];
 
         if (isset($_GET['search-key'])) $arrQuery[] = ['name', 'like', '%' . $_GET['search-key'] . '%'];
+        
         if (!empty($arrQuery)) {
             $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'special', 'ordering', 'cate_id')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
 

@@ -27,7 +27,7 @@
                         <div class="container-fluid">
                             <div class="row justify-content-between align-items-center">
                                 <div class="area-filter-status mb-2">
-                                    <a href="index.php?module=backend&amp;controller=slider&amp;action=index&amp;filterStatus=all" class="btn btn-info">All <span class="badge badge-pill badge-light">7</span></a> <a href="index.php?module=backend&amp;controller=slider&amp;action=index&amp;filterStatus=active" class="btn btn-secondary">Active <span class="badge badge-pill badge-light">5</span></a> <a href="index.php?module=backend&amp;controller=slider&amp;action=index&amp;filterStatus=inactive" class="btn btn-secondary">Inactive <span class="badge badge-pill badge-light">2</span></a>
+                                    {{areaFilterStatus($count, route('admin.slider.getList'), $_GET)}}
                                 </div>
                             </div>
                         </div>
