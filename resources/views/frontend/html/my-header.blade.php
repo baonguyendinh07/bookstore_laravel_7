@@ -39,17 +39,19 @@ if (session()->has('userInfo')) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="book.html" class="my-menu-link" data-active="list">
+                                        <a href="{{url('/list-book')}}" class="my-menu-link" data-active="list">
                                             Sách
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="category.html" class="my-menu-link" data-active="category">
+                                        <a href="" class="my-menu-link" 
+                                        data-active="category">
                                             Danh mục
                                         </a>
                                         <ul>
-                                            <?php //echo $headerCatarogy ?? '' 
-                                            ?>
+                                            @foreach($cates as $item)
+                                            <li><a href="{{'c-' . $item->id .'-' . Str::slug($item->name)}}">{{$item['name']}}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                 </ul>
@@ -70,8 +72,7 @@ if (session()->has('userInfo')) {
                                 <ul>
                                     <li class="onhover-div mobile-search">
                                         <div>
-                                            <img src="<?php //echo $this->_pathImg 
-                                                        ?>search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt="">
+                                            <img src="{{asset('public/frontend/images/' . 'search.png')}}" onclick="openSearch()" class="img-fluid blur-up lazyload" alt="">
                                             <i class="ti-search" onclick="openSearch()"></i>
                                         </div>
                                         <div id="search-overlay" class="search-overlay">
@@ -81,7 +82,7 @@ if (session()->has('userInfo')) {
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-xl-12">
-                                                                <form action="book.html" method="GET">
+                                                                <form action="{{url('/list-book')}}" method="GET">
                                                                     <div class="form-group">
                                                                         <input type="text" class="form-control" name="search" id="search-input" placeholder="Tìm kiếm sách...">
                                                                     </div>

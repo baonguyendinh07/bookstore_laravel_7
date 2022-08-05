@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use App\Cate;
 
 class FrontendServiceProvider extends ServiceProvider
 {
@@ -12,6 +13,7 @@ class FrontendServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         //
@@ -24,6 +26,9 @@ class FrontendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //View::composer('frontend.html.my-header', 'App\Http\View\Composers\Frontend\CateComposer');
+        $categories = Cate::select()->get();
+        View::share('categories', $categories);
+        View::share('cates', $categories);
     }
 }

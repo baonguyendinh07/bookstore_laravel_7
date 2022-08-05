@@ -20,6 +20,9 @@ Route::get('/admin', 'Admin\LoginController@getLogin');
 Route::get('/', ['as' => 'frontend.index.getIndex', 'uses' => 'Frontend\IndexController@getIndex']);
 
 Route::get('/b-{id}-{slug}', 'Frontend\BookController@getItem');
+Route::get('/list-book', 'Frontend\BookController@getList');
+Route::get('/c-{id}-{slug}', 'Frontend\BookController@getList');
+
 
 Route::get('/login', ['as' => 'frontend.login.getLogin', 'uses' => 'Frontend\LoginController@getLogin']);
 Route::post('/login', ['as' => 'frontend.login.postLogin', 'uses' => 'Frontend\LoginController@postLogin']);
