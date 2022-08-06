@@ -22,16 +22,23 @@ Route::get('/', ['as' => 'frontend.index.getIndex', 'uses' => 'Frontend\IndexCon
 Route::get('/b-{id}-{slug}', 'Frontend\BookController@getItem');
 Route::get('/list-book', 'Frontend\BookController@getList');
 Route::get('/c-{id}-{slug}', 'Frontend\BookController@getList');
+Route::get('/qv{id}-{slug}', 'Frontend\BookController@quickView');
 
-
+//login-logout-register
 Route::get('/login', ['as' => 'frontend.login.getLogin', 'uses' => 'Frontend\LoginController@getLogin']);
 Route::post('/login', ['as' => 'frontend.login.postLogin', 'uses' => 'Frontend\LoginController@postLogin']);
 Route::get('/logout', ['as' => 'frontend.login.getLogout', 'uses' => 'Frontend\LoginController@getLogout']);
 Route::get('/register', ['as' => 'frontend.login.getRegister', 'uses' => 'Frontend\LoginController@getRegister']);
 
+//user
 Route::get('/profile', ['as' => 'frontend.user.getProfile', 'uses' => 'Frontend\UserController@getProfile'])->middleware('frontendLogin');
 Route::get('/change-password', ['as' => 'frontend.user.getChangePassword', 'uses' => 'Frontend\UserController@getChangePassword'])->middleware('frontendLogin');
 Route::get('/order-history', ['as' => 'frontend.user.getOrderHistory', 'uses' => 'Frontend\UserController@getOrderHistory'])->middleware('frontendLogin');
+Route::get('/add-to-cart-b{id}-q{quantities}', ['as' => 'frontend.user.addToCart', 'uses' => 'Frontend\UserController@addToCart']);
+Route::get('/cart', ['as' => 'frontend.user.getCart', 'uses' => 'Frontend\UserController@getCart'])->middleware('frontendLogin');
+Route::post('/cart', ['as' => 'frontend.user.orderBooks', 'uses' => 'Frontend\UserController@orderBooks'])->middleware('frontendLogin');
+Route::get('/orderStatus', ['as' => 'frontend.user.orderStatus', 'uses' => 'Frontend\UserController@orderStatus']);
+Route::get('/del-item-cart-b{id}', ['as' => 'frontend.user.delItemCart', 'uses' => 'Frontend\UserController@delItemCart'])->middleware('frontendLogin');
 
 Route::get('/error', ['as' => 'frontend.error.getError', 'uses' => 'Frontend\ErrorController@getError']);
 

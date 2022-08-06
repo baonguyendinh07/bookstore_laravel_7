@@ -110,11 +110,12 @@
                     <div class="tab-content-cls">
                         <!-- content -->
                         @foreach($specialCategories as $category)
-                        <div id="tab-category-{{$category['id']}}" class="tab-content <?php echo $default; $default = ''; ?>">
+                        <div id="tab-category-{{$category['id']}}" class="tab-content <?php echo $default;
+                                                                                        $default = ''; ?>">
                             <div class="no-slider row tab-content-inside">
-                                {{showProductBox($booksOfSpecialCates[$category['id']], asset('resources/upload/book/images'), 90, '', '60px')}}
+                                {{showProductBox($booksOfSpecialCates[$category->id], asset('resources/upload/book/images'), 90, '', '60px')}}
                             </div>
-                            <div class="text-center"><a href="list.html" class="btn btn-solid">Xem tất cả</a></div>
+                            <div class="text-center"><a href="{{url('/c-' . $category->id . '-' . Str::slug($category->name))}}" class="btn btn-solid">Xem tất cả</a></div>
                         </div>
                         @endforeach
                         <!-- end content -->

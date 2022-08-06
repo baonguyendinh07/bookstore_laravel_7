@@ -75,8 +75,9 @@ function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heigh
         $name       = textCutting($value['name'], $strlen);
         $picture    = !empty($value['picture']) ? $pathPicture . '/' . $value['picture'] : $pathPicture . '/default.jpg';
         $itemURL    = url('/b-' . $id . '-' . Str::slug($value['name']));
-        //$quickViewURL = filterURL($value['name']) . '-qv' . $id;
-        $quickViewURL = '';
+
+        $oneToCartUrl = url('add-to-cart-b' . $id . '-q1');
+        $quickViewURL = url('qv' . $id . '-' . Str::slug($value['name']));
         $saleOffXhtml = '';
 
         if ($value['sale_off'] > 0) {
@@ -104,7 +105,7 @@ function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heigh
                         </a>
                     </div>
                     <div class="cart-info cart-wrap">
-                        <a href="" title="Add to cart" class="btn-ajax-addOneToCart"><i class="ti-shopping-cart"></i></a>
+                        <a href="' . $oneToCartUrl . '" title="Add to cart" class="btn-ajax-addOneToCart"><i class="ti-shopping-cart"></i></a>
                         <a href="' . $quickViewURL . '" title="Quick View" class="btn-ajax-quick-view"><i class="ti-search" data-toggle="modal" data-target="#quick-view"></i></a>
                     </div>
                 </div>

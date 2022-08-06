@@ -16,7 +16,7 @@ class IndexController extends Controller
 
         $specialBooks = Book::select('id', 'name', 'short_description', 'price', 'sale_off', 'picture')->where([['status', '=', 'active'], ['special', '=', '1']])->orderBy('ordering', 'ASC')->get()->toArray();
 
-        $specialCategories = Cate::select('id', 'name')->where([['status', '=', 'active'], ['special', '=', '1']])->orderBy('ordering', 'ASC')->get()->toArray();
+        $specialCategories = Cate::select('id', 'name')->where([['status', '=', 'active'], ['special', '=', '1']])->orderBy('ordering', 'ASC')->get();
 
         foreach($specialCategories as $value){
             $booksOfSpecialCates[$value['id']] = Book::select('id', 'name', 'short_description', 'price', 'sale_off', 'picture')->where([['status', '=', 'active'], ['cate_id', '=', $value['id']]])->orderBy('ordering', 'ASC')->take(8)->get()->toArray();

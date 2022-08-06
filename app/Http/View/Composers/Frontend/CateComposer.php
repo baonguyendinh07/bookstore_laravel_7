@@ -32,9 +32,9 @@ class CateComposer
      * @param  View  $view
      * @return void
      */
-/*     public function compose(View $view)
+    public function compose(View $view)
     {
         $categories = Cate::select()->get()->toArray();
         return $view->with('categories', $categories);
-    } */
+    }
 }

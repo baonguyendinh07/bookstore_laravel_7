@@ -63,7 +63,7 @@ $description = $data['description'];
                                         </div>
                                     </div>
                                     <div class="product-buttons">
-                                        <a href="" class="btn btn-solid ml-0" id="btn-ajax-addItemToCart"><i class="fa fa-cart-plus"></i> Chọn mua</a>
+                                        <a href="{{url('add-to-cart-b'. $data['id'])}}" class="btn btn-solid ml-0" id="btn-ajax-addItemToCart"><i class="fa fa-cart-plus"></i> Chọn mua</a>
                                     </div>
                                     <!-- short descriotion -->
                                     <div class="border-product">{{$data['short_description']}}</div>
@@ -218,8 +218,8 @@ $description = $data['description'];
                                                             </h6>
                                                         </a>
                                                         <div class="buttons">
-                                                            <a href="index.php?module=frontend&controller=user&action=cart" class="view-cart btn btn-solid">Xem giỏ hàng</a>
-                                                            <a href="" class="continue btn btn-solid" data-dismiss="modal">Tiếp tục mua sắm</a>
+                                                            <a href="{{url('cart')}}" class="view-cart btn btn-solid">Xem giỏ hàng</a>
+                                                            <a href="{{url('/')}}" class="continue btn btn-solid" data-dismiss="modal">Tiếp tục mua sắm</a>
                                                         </div>
                                                     </div>
                                                 </div>

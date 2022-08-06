@@ -48,7 +48,7 @@ $(document).ready(function () {
     $(document).on('click', '#btn-ajax-addManyToCart', function (e) {
         e.preventDefault();
         var quantities = $('.quantities').val();
-        var url = $(this).attr('href') + quantities;
+        var url = $(this).attr('href') + '-q' + quantities;
         $.ajax({
             type: "GET",
             url: url,
@@ -62,7 +62,7 @@ $(document).ready(function () {
     $(document).on('click', '#btn-ajax-addItemToCart', function (e) {
         e.preventDefault();
         var quantities = $('#quantities').val();
-        var url = $(this).attr('href') + quantities;
+        var url = $(this).attr('href') + '-q' + quantities;
         $.ajax({
             type: "GET",
             url: url,
@@ -75,21 +75,13 @@ $(document).ready(function () {
     });
 
     $('.change-quantities').change(function () {
-        let ele = $(this);
+        var ele = $(this);
         var quantities = ele.val() - ele.data('quantities-saved');
-        var url = ele.data('url') + '&quantities=' + quantities;
+        var url = ele.data('url') + '-q' + quantities;
         $.ajax({
             type: "GET",
             url: url
         });
         location.reload();
-    });
-
-    $(document).on('click', '.delete-item-cart', function () {
-        var url = $(this).attr('href');
-        $.ajax({
-            type: "GET",
-            url: url
-        });
     });
 });

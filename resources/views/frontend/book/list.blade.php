@@ -24,7 +24,7 @@
                             <h3 class="collapse-block-title">Danh mục</h3>
                             <div class="collection-collapse-block-content">
                                 <div class="collection-brand-filter">
-                                    @foreach($categories as $item)
+                                    @foreach($cates as $item)
                                     <div class="custom-control custom-checkbox collection-filter-checkbox pl-0 category-item">
                                         <a class="<?= $item->id == $id ? 'my-text-primary' : 'text-dark' ?>" href="{{'c-' . $item->id .'-' . Str::slug($item->name)}}">{{$item->name}}</a>
                                     </div>

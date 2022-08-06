@@ -2,7 +2,7 @@
 $userActionButton = '';
 if (session()->has('userInfo')) {
     $userActionButton = '
-                        <li><a href="'.url('/profile').'">Profile</a></li>
+                        <li><a href="' . url('/profile') . '">Profile</a></li>
                         <li><a href="' . url('logout') . '">Đăng xuất</a></li>
                         ';
 } else {
@@ -44,13 +44,12 @@ if (session()->has('userInfo')) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="" class="my-menu-link" 
-                                        data-active="category">
+                                        <a href="" class="my-menu-link" data-active="category">
                                             Danh mục
                                         </a>
                                         <ul>
-                                            @foreach($cates as $item)
-                                            <li><a href="{{'c-' . $item->id .'-' . Str::slug($item->name)}}">{{$item['name']}}</a></li>
+                                            @foreach($categories as $item)
+                                            <li><a href="{{'c-' . $item['id'] .'-' . Str::slug($item['name'])}}">{{$item['name']}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -97,11 +96,10 @@ if (session()->has('userInfo')) {
                                     </li>
                                     <li class="onhover-div mobile-cart">
                                         <div>
-                                            <a href="cart.html" id="cart" class="position-relative">
+                                            <a href="{{url('cart')}}" id="cart" class="position-relative">
                                                 <img src="{{asset('public/frontend/images/cart.png')}}" class="img-fluid blur-up lazyload" alt="cart">
                                                 <i class="ti-shopping-cart"></i>
-                                                <span class="badge badge-warning" id="totalQuantities"><?php //echo $totalQuantities 
-                                                                                                        ?></span>
+                                                <span class="badge badge-warning" id="totalQuantities">{{array_sum(session('cart') ?? [])}}</span>
                                             </a>
                                         </div>
                                     </li>

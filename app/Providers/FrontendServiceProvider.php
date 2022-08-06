@@ -26,9 +26,9 @@ class FrontendServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //View::composer('frontend.html.my-header', 'App\Http\View\Composers\Frontend\CateComposer');
-        $categories = Cate::select()->get();
-        View::share('categories', $categories);
-        View::share('cates', $categories);
+        View::composer('frontend.html.my-header', 'App\Http\View\Composers\Frontend\CateComposer');
+        $cates = Cate::select()->get();
+        View::share('cates', $cates);
+        //View::share('cates', $categories);
     }
 }
