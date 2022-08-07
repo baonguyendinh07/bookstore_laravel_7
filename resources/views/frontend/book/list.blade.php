@@ -26,7 +26,13 @@
                                 <div class="collection-brand-filter">
                                     @foreach($cates as $item)
                                     <div class="custom-control custom-checkbox collection-filter-checkbox pl-0 category-item">
-                                        <a class="<?= $item->id == $id ? 'my-text-primary' : 'text-dark' ?>" href="{{'c-' . $item->id .'-' . Str::slug($item->name)}}">{{$item->name}}</a>
+                                        <?php
+                                        if ($item->id == $id) {
+                                            $currentPage = 'c-' . $item->id . '-' . Str::slug($item->name);
+                                            $class = 'my-text-primary';
+                                        } else $class = 'text-dark';
+                                        ?>
+                                        <a class="{{$class}}" href="{{'c-' . $item->id .'-' . Str::slug($item->name)}}">{{$item->name}}</a>
                                     </div>
                                     @endforeach
                                     <div class="custom-control custom-checkbox collection-filter-checkbox pl-0 text-center">
@@ -861,7 +867,7 @@
                                                         <div class="col-xl-6 col-md-6 col-sm-12">
                                                             <nav aria-label="Page navigation">
                                                                 <nav>
-                                                                    {{showPagination($data, 'list-book', 3) ?? ''}}
+                                                                    {{showPagination($data, $currentPage ?? 'list-book', 3) ?? ''}}
                                                                 </nav>
                                                             </nav>
                                                         </div>
