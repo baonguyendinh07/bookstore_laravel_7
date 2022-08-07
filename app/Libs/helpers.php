@@ -127,3 +127,78 @@ function showProductBox($arrData, $pathPicture, $strlen, $boxHeight = '', $heigh
     }
     echo $xhtmlTypeBooks;
 }
+
+function showPagination($data, $path, $pageRange = 3)
+{
+    // Pagination
+    $paginationHTML = '';
+    if ($data->lastPage() > 1) {
+        $start     = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>';
+        $prev     = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-left"></i></a></li>';
+        $path .= '?';
+        if(isset($_GET['page'])) unset($_GET['page']);
+        if (!empty($_GET)) {        
+            $params = [];
+            foreach ($_GET as $key => $value) {
+                $params[] = $key . '=' . $value;
+            }
+
+            $path .= implode('&', $params) . '&';
+        }
+        $doubleLeft     = url($path . 'page=1');
+        $left           = url($path . 'page=' . ($data->currentPage() - 1));
+        $right          = url($path . 'page=' . ($data->currentPage() + 1));
+        $doubleRight    = url($path . 'page=' . $data->lastPage());
+
+        if ($data->currentPage() > 1) {
+            $start     = '<li class="page-item"><a class="page-link" href="' . $doubleLeft . '"><i class="fa fa-angle-double-left"></i></a></li>';
+            $prev     = '<li class="page-item"><a class="page-link" href="' . $left . '"><i class="fa fa-angle-left"></i></a></li>';
+        }
+
+        $next = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-right"></i></a></li></li>';
+        $end  = '<li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-right"></i></a></li>';
+
+        if ($data->currentPage() < $data->lastPage()) {
+            $next     = '<li class="page-item"><a class="page-link" href="' . $right . '"><i class="fa fa-angle-right"></i></a></li>';
+            $end     = '<li class="page-item"><a class="page-link" href="' . $doubleRight . '"><i class="fa fa-angle-double-right"></i></a></li>';
+        }
+
+        if ($pageRange < $data->lastPage()) {
+            if ($data->currentPage() == 1) {
+                $startPage      = 1;
+                $endPage        = $pageRange;
+            } else if ($data->currentPage() == $data->lastPage()) {
+                $startPage        = $data->lastPage() - $pageRange + 1;
+                $endPage        = $data->lastPage();
+            } else {
+                $startPage        = $data->currentPage() - ($pageRange - 1) / 2;
+                $endPage        = $data->currentPage() + ($pageRange - 1) / 2;
+
+                if ($startPage < 1) {
+                    $endPage    = $endPage + 1;
+                    $startPage = 1;
+                }
+
+                if ($endPage > $data->lastPage()) {
+                    $endPage    = $data->lastPage();
+                    $startPage     = $endPage - $pageRange + 1;
+                }
+            }
+        } else {
+            $startPage        = 1;
+            $endPage        = $data->lastPage();
+        }
+
+        $listPages = '';
+        for ($i = $startPage; $i <= $endPage; $i++) {
+            if ($i == $data->currentPage()) {
+                $listPages .= '<li class="page-item active"><a class="page-link" href="' . url($path . 'page=' . $i) . '">' . $i . '</a>';
+            } else {
+                $listPages .= '<li class="page-item"><a class="page-link" href="' . url($path . 'page=' . $i) . '">' . $i . '</a>';
+            }
+        }
+
+        $paginationHTML = '<ul class="pagination m-0 float-right">' . $start . $prev . $listPages . $next . $end . '</ul>';
+    }
+    echo $paginationHTML;
+}

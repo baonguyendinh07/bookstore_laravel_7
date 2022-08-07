@@ -85,7 +85,9 @@ if (session()->has('userInfo')) {
                                                                     <div class="form-group">
                                                                         <input type="text" class="form-control" name="search" id="search-input" placeholder="Tìm kiếm sách...">
                                                                     </div>
-                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        <i class="fa fa-search"></i>
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         </div>

@@ -45,7 +45,7 @@ class BookController extends Controller
             'id_desc' => 'Mới nhất'
         ];
 
-        $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'cate_id')->where($arrQuery)->orderBy($orderBy[0], $orderBy[1])->get();
+        $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'cate_id')->where($arrQuery)->orderBy($orderBy[0], $orderBy[1])->paginate(12);
         $count['total'] = count($data);
 
         $title = 'BOOKSTORE - LIST BOOK';

@@ -833,7 +833,7 @@
                                                     </div>
                                                     <div class="product-page-filter">
                                                         <form action="" id="sort-form" method="GET" class="filter-element">
-                                                            <select class="" name="sort">
+                                                            <select name="sort">
                                                                 @foreach($arrOptions as $key => $value)
                                                                 @if(isset($_GET['sort']) && $key == $_GET['sort'])
                                                                 <option value="{{$key}}" selected>{{$value}}</option>
@@ -859,25 +859,17 @@
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
                                                         <div class="col-xl-6 col-md-6 col-sm-12">
-                                                            <!-- <nav aria-label="Page navigation">
+                                                            <nav aria-label="Page navigation">
                                                                 <nav>
-                                                                    <ul class="pagination m-0 float-right">
-                                                                        <li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>
-                                                                        <li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-left"></i></a></li>
-                                                                        <li class="page-item active"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=1">1</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=2">2</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=3">3</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=4">4</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=5">5</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=2"><i class="fa fa-angle-right"></i></a></li>
-                                                                        <li class="page-item"><a class="page-link" href="index.php?module=frontend&amp;controller=book&amp;action=list&amp;page=7"><i class="fa fa-angle-double-right"></i></a></li>
-                                                                    </ul>
+                                                                    {{showPagination($data, 'list-book', 3) ?? ''}}
                                                                 </nav>
-                                                            </nav> -->
+                                                            </nav>
                                                         </div>
                                                         <div class="col-xl-6 col-md-6 col-sm-12">
                                                             <div class="product-search-count-bottom">
-                                                                <h5>Showing <!-- Items 1 - 12 of  -->{{$count['total']}} Results</h5>
+                                                                <h5>Showing
+                                                                    <!-- Items 1 - 12 of  -->{{$count['total']}} Results
+                                                                </h5>
                                                             </div>
                                                         </div>
                                                     </div>

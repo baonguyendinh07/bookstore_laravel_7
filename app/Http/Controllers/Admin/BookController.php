@@ -22,7 +22,7 @@ class BookController extends Controller
 
     public function getList()
     {
-        $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'special', 'ordering', 'cate_id')->orderBy('id', 'DESC')->get()->toArray();
+        $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'special', 'ordering', 'cate_id')->orderBy('id', 'DESC')->paginate(10);
         $arrDataForCount = $data;
         $cateOptions = $this->getCateOptions();
 
@@ -33,7 +33,7 @@ class BookController extends Controller
         if (isset($_GET['search-key'])) $arrQuery[] = ['name', 'like', '%' . $_GET['search-key'] . '%'];
         
         if (!empty($arrQuery)) {
-            $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'special', 'ordering', 'cate_id')->where($arrQuery)->orderBy('id', 'DESC')->get()->toArray();
+            $data = Book::select('id', 'name', 'short_description', 'description', 'price', 'sale_off', 'picture', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'special', 'ordering', 'cate_id')->where($arrQuery)->orderBy('id', 'DESC')->paginate(10);
 
             foreach ($arrQuery as $key => $value) {
                 if ($value[0] == 'status') unset($arrQuery[$key]);

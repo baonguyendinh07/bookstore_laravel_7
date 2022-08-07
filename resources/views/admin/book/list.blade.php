@@ -168,15 +168,7 @@ $specialOptions = ['No', 'Yes'];
                     </div>
 
                     <div class="card-footer clearfix">
-                        <ul class="pagination m-0 float-right">
-                            <li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li class="page-item disabled"><a class="page-link"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="index.php?module=backend&controller=book&action=index&page=1">1</a>
-                            <li class="page-item"><a class="page-link" href="index.php?module=backend&controller=book&action=index&page=2">2</a>
-                            <li class="page-item"><a class="page-link" href="index.php?module=backend&controller=book&action=index&page=3">3</a>
-                            <li class="page-item"><a class="page-link" href="index.php?module=backend&controller=book&action=index&page=2"><i class="fa fa-angle-right"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="index.php?module=backend&controller=book&action=index&page=8"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
+                        {{showPagination($data, 'admin/book/list', 3) ?? ''}}
                     </div>
                 </div>
             </div>
