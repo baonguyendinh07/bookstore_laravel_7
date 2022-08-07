@@ -13,7 +13,7 @@
                 <img src="{{asset('resources/upload/user/avatars/'.(Auth::user()->avatar ?? 'default.jpg'))}}" class="img-circle elevation-2" alt="User Image" />
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{Auth::user()->fullname}}</a>
+                <a href="{{route('admin.user.getProfile')}}" class="d-block">{{Auth::user()->fullname}}</a>
             </div>
         </div>
 

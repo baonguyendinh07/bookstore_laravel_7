@@ -5,7 +5,6 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
@@ -26,12 +25,12 @@
 
                     <p>
                         {{Auth::user()->fullname}}
-                        <small>Username</small>
+                        <small>{{Auth::user()->username}}</small>
                     </p>
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="admin-profile" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{route('admin.user.getProfile')}}" class="btn btn-default btn-flat">Profile</a>
                     <a href="{{route('admin.login.getLogout')}}" class="btn btn-default btn-flat float-right">Sign out</a>
                 </li>
             </ul>

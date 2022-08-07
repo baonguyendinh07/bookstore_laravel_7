@@ -117,4 +117,17 @@ class UserController extends Controller
         $user->delete($id);
         return redirect()->route('admin.user.getList')->with(['flash_type' => 'success', 'flash_message' => 'Thông tin sách đã được xóa thành công!']);
     }
+
+    public function getProfile()
+    {
+        $userInfo = Auth::user();
+        $title = 'Profile';
+        return view('admin.user.profile', compact('title', 'userInfo'));
+    }
+
+    public function changeAccPw()
+    {
+        $title = 'Change Password';
+        return view('admin.user.changeAccPw', compact('title'));
+    }
 }

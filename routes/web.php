@@ -104,6 +104,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('add', ['as' => 'admin.user.getAdd', 'uses' => 'Admin\UserController@getAdd']);
         Route::post('add', ['as' => 'admin.user.postAdd', 'uses' => 'Admin\UserController@postAdd']);
 
+        //account
+        Route::get('profile', ['as' => 'admin.user.getProfile', 'uses' => 'Admin\UserController@getProfile']);
+        Route::get('changeAccPw', ['as' => 'admin.user.changeAccPw', 'uses' => 'Admin\UserController@changeAccPw']);
+
         //delete
         Route::get('delete/{id}', ['as' => 'admin.user.getDelete', 'uses' => 'Admin\UserController@getDelete']);
     });
